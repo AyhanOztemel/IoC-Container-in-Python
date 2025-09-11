@@ -31,7 +31,7 @@ class TransientService(ITransientService):
         return "Transient İşlendi"
 
 # 3. IoC Container'ı oluştur
-container = Container()
+container = Container( strict_interfaces= True)
 
 # 4. Servisleri kaydet
 container.register_singleton(ISingletonService, SingletonService)
