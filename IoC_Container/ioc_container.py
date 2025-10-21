@@ -247,7 +247,13 @@ class Container:
             print(f"🔍 Derin modül keşfi başlatılıyor...")
             count = _deep_module_discovery()
             print(f"✅ {count} modül yüklendi")
-
+    #***********yalnız kullanımda bu kod bloğu mecburi******************
+    @classmethod
+    def provider(cls, service_type: Type[T]) -> T:
+        if not hasattr(cls, '_instance'):
+            cls._instance = cls()
+        return cls._instance.resolve(service_type)
+    #********************************************************************
     def register(self, service_type: Type, implementation_type: Type = None, 
                  scope: LifetimeScope = LifetimeScope.TRANSIENT) -> None:
         """

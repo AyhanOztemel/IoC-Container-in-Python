@@ -2,13 +2,13 @@
 from register import container
 from transient_ins import Transient_instance
 from register import IScopedService,Abs_SingletonService
-
+import services
 class Scoped_Instance:
     def __init__(self):
         print("-----------------scpoe_ins.py----------------------------------")
         # 6. Scoped Test
         with container.create_scope() as scopeX:
-            self.scoped1 = scopeX.resolve(IScopedService)
+            self.scoped1 = scopeX.resolve(IScopedService)#scoped'da provider hata verir
             self.scoped2 = scopeX.resolve(IScopedService)
             self.scoped3 = scopeX.resolve(IScopedService)
         with container.create_scope() as scopeY:
@@ -36,7 +36,7 @@ class Scoped_Instance:
 
         print("---------------scpoe_ins.py--------------------------------")
         # 5. Singleton Test
-        self.singleton1 = container.resolve(Abs_SingletonService)
+        self.singleton1 = container.provider(Abs_SingletonService)
         self.singleton2 = container.resolve(Abs_SingletonService)
         self.singleton3 = container.resolve(Abs_SingletonService)
 

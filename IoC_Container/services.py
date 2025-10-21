@@ -4,6 +4,7 @@ from abs_services import Abs_SingletonService,IScopedService,ITransientService
 
 class SingletonService(Abs_SingletonService):
     def process(self):
+    
         return "Singleton İşlendi"
 
 class ScopedService(IScopedService):

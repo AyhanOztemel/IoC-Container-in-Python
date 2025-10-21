@@ -4,9 +4,9 @@ from register import Abs_SingletonService,IScopedService
 from scope_ins import  Scoped_Instance
 print("--------------ioc_test.py-------------------------------")
 # 5. Singleton Test
-singleton1 = container.resolve(Abs_SingletonService)
-singleton2 = container.resolve(Abs_SingletonService)
-singleton3 = container.resolve(Abs_SingletonService)
+singleton1 = container.provider(Abs_SingletonService)
+singleton2 = container.provider(Abs_SingletonService)
+singleton3 = container.provider(Abs_SingletonService)
 
 print("Singleton Test:", singleton1 is singleton2 is singleton3)  # True (Aynı nesne)
 print(singleton1.process())  # "Singleton İşlendi"
@@ -25,7 +25,7 @@ def request_scope():
 scope_gen = request_scope()          # generator oluşturulur
 scopeK = next(scope_gen)             # yield'e kadar gider, scope döner
 
-scoped9 = scopeK.resolve(IScopedService)
+scoped9 = scopeK.resolve(IScopedService) #scoped'da provider hata verir
 scoped10 = scopeK.resolve(IScopedService)
 
 print(scoped9 is scoped10)           # True

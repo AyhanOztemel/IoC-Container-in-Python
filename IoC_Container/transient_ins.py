@@ -5,7 +5,7 @@ class Transient_instance:
     def __init__(self):
         print("------------transient_ins.py----------------------------------------")
         # 7. Transient Test
-        self.transient1 = container.resolve(ITransientService)
+        self.transient1 = container.provider(ITransientService)
         self.transient2 = container.resolve(ITransientService)
         self.transient3 = container.resolve(ITransientService)
 
